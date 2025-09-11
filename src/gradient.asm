@@ -1,6 +1,6 @@
 ;; i dont like all the magic number stuff
 ;; also, I had to painstakingly try to find the
-;; last pixel before
+;; last pixel on bottom right, instead of just calculating it. very amateur
 
 
       mov r12, #0x0
