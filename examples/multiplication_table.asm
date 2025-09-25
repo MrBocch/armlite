@@ -27,7 +27,6 @@ loop:
     CMP r2, #13
     BEQ setinnerloop
     b loop
-    ; store sum 
 
 setinnerloop:
     ADD r1, r1, #1
