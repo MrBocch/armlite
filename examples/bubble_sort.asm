@@ -5,7 +5,7 @@
 
 mov r0, #0          ; i
 mov r1, #0          ; j
-mov r2, #40         ; size = (sizeof(i32) * 10)
+mov r2, #40         ; size = (sizeof(i32) * n) ; n = 10 ; sizeof(int) = 4 ; word*n
 mov r3, #end_of_code; &arr
 
 input_array:
