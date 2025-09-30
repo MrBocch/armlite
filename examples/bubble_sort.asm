@@ -1,14 +1,12 @@
 ; input 10 numbers
 ; bubble sorts them
-; how do you properly chose memory location for array?
-; (ideally, it would be automatically very after the end of the code)
 ; make a print array function how?
 ; parameterize everything
 
 mov r0, #0          ; i
 mov r1, #0          ; j
 mov r2, #40         ; size = (sizeof(i32) * 10)
-mov r3, #240        ; &arr
+mov r3, #end_of_code; &arr
 
 input_array:
 	ldr r4, .InputNum
@@ -16,8 +14,6 @@ input_array:
 	add r0, r0, #4              ; add by word size
 	cmp r0, r2                  ; size of array
 	blt input_array
-	mov r0, #before_sort
-	str r0, .WriteString
 	mov r0, #0
 	b bubble_sort
 
@@ -51,5 +47,9 @@ break:
 before_sort: .asciz "Before sorting\n"
 after_sort: .asciz  "\nAfter sorting\n" 
 
+;; the array will be "allocated" after all the code
+;; the ideal location.
+;; but, what if you had to arrays? if they are static, no problem arr2 = (arr1*size)+1 ?
+;; 
 end_of_code:
 
