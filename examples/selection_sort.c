@@ -33,7 +33,7 @@ void swap(int *p1, int*p2){
     *p1 = temp; 
 }
 
-void bubble_sort(int *arr){
+void selection_sort(int *arr){
     for(int i = 0; i < SIZE; i++){
         for(int j = i; j < SIZE; j++){
             if(arr[i] > arr[j]) { swap(&arr[i], &arr[j]); }

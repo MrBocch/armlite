@@ -1,5 +1,5 @@
 ; input 10 numbers
-; bubble sorts them
+; selection sorts them
 ; make a print array function how?
 ; parameterize everything
 
@@ -15,9 +15,9 @@ input_array:
 	cmp r0, r2                  ; size of array
 	blt input_array
 	mov r0, #0
-	b bubble_sort
+	b selection_sort
 
-bubble_sort:
+selection_sort:
 	cmp r0, r2               
 	beq break                   ; break if i == size 
 	cmp r1, r2
@@ -29,12 +29,12 @@ bubble_sort:
 	bgt swap 
 after_swap: 
 	add r1, r1, #4
-	b bubble_sort 
+	b selection_sort 
 
 reset_j:
 	add r0, r0, #4             ; i++
 	mov r1, r0                 ; j = i
-	b bubble_sort
+	b selection_sort
 
 swap:
 	str r11, [r3 + r1]
