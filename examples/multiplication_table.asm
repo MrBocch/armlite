@@ -1,27 +1,33 @@
 
 MOV r1,  #1        ; i
 MOV r2,  #1        ; j
-MOV r3,  #0        ; sum 
+MOV r3,  #0        ; sum
 mov r0, #linez     ; -----------
-MOV r10, #x        ; ' x '
-MOV r11, #equals   ; ' = ' 
-MOV r12, #nline    ; \n
 B loop
-        
+
 loop:
     CMP r1, #13
     BEQ end
     ; sum
-    ADD r3, r3, r1 
+    ADD r3, r3, r1
 
     STR r1, .WriteSignedNum
-    STR r10,.WriteString
+
+    PUSH {R0}
+    MOV r0, #x
+    BL printString
+
     STR r2, .WriteSignedNum
-    STR r11,.WriteString
+
+    PUSH {r0}
+    MOV r0, #equals
+    BL printString
     ; str sum
     STR r3, .WriteSignedNum
 
-    STR r12,.WriteString 
+    PUSH {r0}
+    MOV r0, #nline
+    BL printString
     ADD r2, r2, #1
 
     CMP r2, #13
@@ -33,11 +39,15 @@ setinnerloop:
     MOV r2, #1
     MOV r3, #0
     STR r0, .WriteString
-    b loop
+    B loop
 
 end:
     HALT
 
+printString:
+  str r0, .WriteString
+  pop {r0}
+  ret
 ; i x j = (i*j)
 x: .ASCIZ " x "
 equals: .ASCIZ " = "
